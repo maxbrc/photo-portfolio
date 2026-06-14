@@ -3,8 +3,8 @@ package albums
 import (
 	"fmt"
 
-	"github.com/maxbrc/richard-freier/backend/internal/db"
-	"github.com/maxbrc/richard-freier/backend/internal/models"
+	"github.com/maxbrc/photo-portfolio/backend/internal/db"
+	"github.com/maxbrc/photo-portfolio/backend/internal/models"
 )
 
 func GetAlbums() ([]*models.Album, error) {

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/maxbrc/richard-freier/backend/internal/db"
+	"github.com/maxbrc/photo-portfolio/backend/internal/db"
 )
 
 type UserRequest struct {

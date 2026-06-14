@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/maxbrc/richard-freier/backend/internal/auth"
+	"github.com/maxbrc/photo-portfolio/backend/internal/auth"
 )
 
 func GetUsers(w http.ResponseWriter, r *http.Request) {

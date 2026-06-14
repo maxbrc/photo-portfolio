@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/maxbrc/richard-freier/backend/internal/auth"
+	"github.com/maxbrc/photo-portfolio/backend/internal/auth"
 )
 
 var allowedSiteContentKeys = map[string]bool{

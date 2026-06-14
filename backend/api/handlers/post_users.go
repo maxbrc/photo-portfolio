@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/maxbrc/richard-freier/backend/internal/auth"
+	"github.com/maxbrc/photo-portfolio/backend/internal/auth"
 )
 
 func PostUsers(w http.ResponseWriter, r *http.Request) {

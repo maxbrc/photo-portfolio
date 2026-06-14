@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/maxbrc/richard-freier/backend/internal/auth"
-	"github.com/maxbrc/richard-freier/backend/internal/images"
+	"github.com/maxbrc/photo-portfolio/backend/internal/auth"
+	"github.com/maxbrc/photo-portfolio/backend/internal/images"
 )
 
 func DeleteImages(w http.ResponseWriter, r *http.Request) {

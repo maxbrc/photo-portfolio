@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/maxbrc/richard-freier/backend/internal/albums"
+	"github.com/maxbrc/photo-portfolio/backend/internal/albums"
 )
 
 func PutAlbumsAssignments(w http.ResponseWriter, r *http.Request) {

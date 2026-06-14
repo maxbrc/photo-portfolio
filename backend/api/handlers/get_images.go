@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/maxbrc/richard-freier/backend/internal/images"
+	"github.com/maxbrc/photo-portfolio/backend/internal/images"
 )
 
 func GetImages(w http.ResponseWriter, r *http.Request) {

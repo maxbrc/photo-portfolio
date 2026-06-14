@@ -8,7 +8,7 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 
-	"github.com/maxbrc/richard-freier/backend/config"
+	"github.com/maxbrc/photo-portfolio/backend/config"
 )
 
 var db *sql.DB

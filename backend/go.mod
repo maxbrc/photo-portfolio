@@ -1,4 +1,4 @@
-module github.com/maxbrc/richard-freier/backend
+module github.com/maxbrc/photo-portfolio/backend
 
 go 1.24.3
 

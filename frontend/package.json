@@ -1,12 +1,12 @@
 {
-  "name": "richard-freier",
-  "version": "1.0.0",
-  "description": "Portfolio Richard Freier",
+  "name": "photo-portfolio",
+  "version": "v0.9.0",
+  "description": "Photo Portfolio",
   "repository": {
     "type": "git",
-    "url": "github.com/maxbrc/richard-freier/client"
+    "url": "github.com/maxbrc/photo-portfolio/client"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "",
   "type": "module",
   "main": "index.js",

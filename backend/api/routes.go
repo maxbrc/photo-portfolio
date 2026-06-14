@@ -5,8 +5,8 @@ import (
 	"net/http/httputil"
 	"net/url"
 
-	"github.com/maxbrc/richard-freier/backend/api/handlers"
-	"github.com/maxbrc/richard-freier/backend/config"
+	"github.com/maxbrc/photo-portfolio/backend/api/handlers"
+	"github.com/maxbrc/photo-portfolio/backend/config"
 )
 
 func SetupRoutes() {

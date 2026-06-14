@@ -3,7 +3,7 @@ package albums
 import (
 	"fmt"
 
-	"github.com/maxbrc/richard-freier/backend/internal/db"
+	"github.com/maxbrc/photo-portfolio/backend/internal/db"
 )
 
 func DeleteAlbum(albumID int) (string, error) {

@@ -8,8 +8,8 @@ import (
 	"github.com/chai2010/webp"
 	"github.com/disintegration/imaging"
 	"github.com/google/uuid"
-	"github.com/maxbrc/richard-freier/backend/internal/db"
-	"github.com/maxbrc/richard-freier/backend/internal/models"
+	"github.com/maxbrc/photo-portfolio/backend/internal/db"
+	"github.com/maxbrc/photo-portfolio/backend/internal/models"
 )
 
 func AddImage(data io.Reader) (string, error) {

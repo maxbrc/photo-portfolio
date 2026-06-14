@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/maxbrc/richard-freier/backend/api"
-	"github.com/maxbrc/richard-freier/backend/config"
-	"github.com/maxbrc/richard-freier/backend/internal/auth"
-	"github.com/maxbrc/richard-freier/backend/internal/db"
+	"github.com/maxbrc/photo-portfolio/backend/api"
+	"github.com/maxbrc/photo-portfolio/backend/config"
+	"github.com/maxbrc/photo-portfolio/backend/internal/auth"
+	"github.com/maxbrc/photo-portfolio/backend/internal/db"
 )
 
 func main() {

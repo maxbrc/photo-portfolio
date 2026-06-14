@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/maxbrc/richard-freier/backend/internal/images"
+	"github.com/maxbrc/photo-portfolio/backend/internal/images"
 )
 
 func GetImagesForAlbumID(w http.ResponseWriter, r *http.Request) {

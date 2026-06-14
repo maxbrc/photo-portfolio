@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/maxbrc/richard-freier/backend/internal/models"
+	"github.com/maxbrc/photo-portfolio/backend/internal/models"
 )
 
 type AlbumImageAssignment struct {

@@ -6,7 +6,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/maxbrc/richard-freier/backend/internal/auth"
+	"github.com/maxbrc/photo-portfolio/backend/internal/auth"
 )
 
 type SuccessfullLoginResponse struct {

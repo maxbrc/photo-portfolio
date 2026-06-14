@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/maxbrc/richard-freier/backend/internal/albums"
-	"github.com/maxbrc/richard-freier/backend/internal/auth"
+	"github.com/maxbrc/photo-portfolio/backend/internal/albums"
+	"github.com/maxbrc/photo-portfolio/backend/internal/auth"
 )
 
 func DeleteAlbums(w http.ResponseWriter, r *http.Request) {

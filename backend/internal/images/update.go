@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/maxbrc/richard-freier/backend/internal/db"
-	"github.com/maxbrc/richard-freier/backend/internal/models"
+	"github.com/maxbrc/photo-portfolio/backend/internal/db"
+	"github.com/maxbrc/photo-portfolio/backend/internal/models"
 )
 
 func UpdateImage(reqBody []byte, imageUUID string) error {
