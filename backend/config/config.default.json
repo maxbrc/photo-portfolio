@@ -1,4 +1,9 @@
 {
+    "website": {
+        "title": "Photography Portfolio",
+        "description": "This is my own personal photography portfolio",
+        "url": "https://myawesomeportfolio.tld"
+    },
     "hero": {
         "title": "Your Name",
         "subtitle": "Your Subtitle",
