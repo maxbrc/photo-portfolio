@@ -1,0 +1,95 @@
+.album-selector {
+    position: relative;
+    width: 100%;
+}
+
+.album-selector .trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border-color 150ms;
+    user-select: none;
+}
+
+.album-selector .trigger:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.album-selector .trigger .trigger-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.album-selector .trigger .trigger-label img {
+    width: 14px;
+    height: 14px;
+    opacity: 0.5;
+}
+
+.album-selector .trigger .chevron {
+    width: 12px;
+    height: 12px;
+    opacity: 0.4;
+    transition: transform 150ms;
+}
+
+.album-selector.open .trigger .chevron {
+    transform: rotate(180deg);
+}
+
+.album-selector .dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background: rgba(22, 22, 22, 0.97);
+    border: 0.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 5px;
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    overflow: hidden;
+    list-style: none;
+}
+
+.album-selector .dropdown li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 9px 12px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: background 120ms;
+}
+
+.album-selector .dropdown li:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.album-selector .dropdown li .checkmark {
+    width: 13px;
+    height: 13px;
+    opacity: 0;
+    flex-shrink: 0;
+}
+
+.album-selector .dropdown li.selected .checkmark {
+    opacity: 0.8;
+}
+
+.album-selector .dropdown li.selected {
+    color: white;
+}
+
+.album-selector.drop-up .dropdown {
+    top: unset;
+    bottom: calc(100% + 6px);
+}

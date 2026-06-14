@@ -1,0 +1,211 @@
+.italiana {
+    font-family: "Italiana", serif;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 500;
+    margin: 0.5rem 0;
+    letter-spacing: 0.05em;
+}
+
+.home-banner {
+    position: relative;
+    height: 100dvh;
+    margin-top: -4rem;
+    flex-shrink: 0;
+    background: #080808;
+    overflow: hidden;
+}
+
+.home-banner-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(65%);
+}
+
+.home-banner-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 8vh;
+}
+
+.home-banner h1 {
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    margin: 0;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.home-banner h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(0.65rem, 1.6vw, 0.88rem);
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin: 0.6rem 0 0;
+}
+
+.profile-placeholder {
+    color: rgba(255, 255, 255, 0.18);
+    flex-shrink: 0;
+}
+
+main section:not(.home-banner) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 680px;
+    width: 100%;
+    align-self: center;
+    padding: 0 1.5rem;
+    gap: 1em;
+    margin: 0;
+}
+
+main section.socials {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+main section span {
+    line-height: 1.6;
+}
+
+main section > ul {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style-type: disc;
+    gap: 0.5em;
+    margin: 0 0 0 1em;
+}
+
+h3 {
+    color: #C42030;
+    font-size: 2em;
+    flex-basis: 100%;
+    text-align: center;
+    letter-spacing: 0.04em;
+}
+
+.social-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex-grow: 1;
+    font-size: 0.8em;
+}
+
+.social-badge ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.social-badge img {
+    height: 3em;
+}
+
+.profile {
+    border-radius: 50%;
+    width: 7em;
+    height: 7em;
+    object-fit: cover;
+}
+
+.auth-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2.75rem;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    font-family: "Poppins", sans-serif;
+    user-select: none;
+    padding: 0 1rem;
+    z-index: 20;
+}
+
+.auth-bar-label {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.auth-bar-divider {
+    width: 0.5px;
+    height: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.auth-bar-btn {
+    background: none !important;
+    border: none !important;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: "Poppins", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0;
+    transition: color 150ms;
+}
+
+.auth-bar-btn:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body[data-auth] header {
+    top: 2.75rem;
+}
+
+body[data-auth] main {
+    padding-top: calc(4rem + 2.75rem);
+}
+
+.home-loading {
+    position: fixed;
+    inset: 0;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    transition: opacity 300ms ease;
+}
+
+.home-loading.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.home-loading span {
+    font-family: "Italiana", serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.1em;
+}

@@ -1,0 +1,63 @@
+.error-list {
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 70%;
+    z-index: 9999;
+    display: flex;
+    height: calc(100% - 2rem);
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    margin: 1rem;
+    pointer-events: none;
+}
+
+.error-list > div {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(28, 28, 28, 0.97);
+    backdrop-filter: blur(8px);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    pointer-events: all;
+}
+
+.error-list div .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+}
+
+.error-list div .icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.error-list div::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+}
+
+.error-list div.error::before { background: #ef3e36; }
+
+.error-list div.warning::before { background: #ff8600; }
+
+.error-list div.info::before { background: #0496ff; }
+
+.error-list div.success::before { background: #72b01d; }

@@ -1,0 +1,177 @@
+header {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    z-index: 10;
+    padding: 1em;
+    background-color: unset;
+    position: fixed;
+    left: 0;
+    right: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    transition: background-color 0.2s linear, backdrop-filter 0.2s linear;
+}
+
+header.dark {
+    background-color: rgba(10, 10, 10, 0.72);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+}
+
+header.dark.nav-open {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: transparent;
+}
+
+header img {
+    height: 100%;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.burger {
+    width: 1.75em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    z-index: 10;
+    margin: 0 0.5em;
+    transform-origin: center;
+    will-change: transform;
+    transition: transform 0.2s ease;
+}
+
+.burger:hover {
+    transform: scale(1.075);
+    transition: transform 0.2s ease;
+}
+
+.burger span {
+    will-change: transform;
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #74121D;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.2s ease;
+    transform-origin: center;
+}
+
+
+.burger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg) ;
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+header nav.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s linear, visibility 0.2s linear;
+}
+
+header nav {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s linear, visibility 0.2s linear;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.92);
+}
+
+header nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+header nav ul li {
+    font-family: "Italiana", serif;
+    font-size: 2em;
+    transition: color 0.2s ease;
+}
+
+header nav ul li:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.2s ease;
+}
+
+header nav a {
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+header nav a:hover::after,
+header nav a.active::after {
+    transform: scaleX(1);
+}
+
+.gallery-hint {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: opacity 0.2s ease;
+    flex-shrink: 0;
+}
+
+.gallery-hint:hover {
+    opacity: 0.9;
+}
+
+.gallery-hint-arrow {
+    transition: transform 0.2s ease;
+    line-height: 1;
+    position: relative;
+    top: -1px;
+}
+
+.gallery-hint:hover .gallery-hint-arrow {
+    transform: translateX(4px);
+}
+
+header nav ul li.impressum {
+    margin: 1rem 0 0 0;
+    font-size: 1.25rem;
+}

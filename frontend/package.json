@@ -1,0 +1,45 @@
+{
+  "name": "richard-freier",
+  "version": "1.0.0",
+  "description": "Portfolio Richard Freier",
+  "repository": {
+    "type": "git",
+    "url": "github.com/maxbrc/richard-freier/client"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server/build-server.mjs && nodemon server/dist/index.js & webpack --watch --config client/webpack.dev.js",
+    "build": "node server/build-server.mjs & webpack build --config client/webpack.prod.js"
+  },
+  "dependencies": {
+    "@tabler/icons-react": "^3.44.0",
+    "express": "^5.1.0",
+    "jwt-decode": "^4.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^7.6.3",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/react-dom": "^19.1.6",
+    "copy-webpack-plugin": "^14.0.0",
+    "css-loader": "^7.1.2",
+    "esbuild": "^0.28.0",
+    "esbuild-node-externals": "^1.22.0",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "nodemon": "^3.1.10",
+    "null-loader": "^4.0.1",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "tsc-watch": "^7.1.1",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-merge": "^6.0.1"
+  }
+}

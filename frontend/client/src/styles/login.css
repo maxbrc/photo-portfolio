@@ -1,0 +1,106 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 2rem 1rem;
+}
+
+.login h1 {
+    font-family: "Italiana", serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.88);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.25rem;
+}
+
+.login h2 {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.06em;
+    margin-bottom: 2rem;
+    font-family: "Poppins", sans-serif;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.login-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.login-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(255, 255, 255, 0.35);
+    font-family: "Poppins", sans-serif;
+}
+
+.login-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.login-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 0.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    padding: 0.6rem 0.75rem;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 150ms;
+    font-family: "Poppins", sans-serif;
+}
+
+.login-input:focus {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.login-eye {
+    position: absolute;
+    right: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: color 150ms;
+    display: flex;
+    align-items: center;
+}
+
+.login-eye:hover {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.login-btn {
+    margin-top: 0.5rem;
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 5px;
+    border: 0.5px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.88rem;
+    font-family: "Italiana", serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 150ms, border-color 150ms;
+}
+
+.login-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.32);
+}

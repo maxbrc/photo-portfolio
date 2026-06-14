@@ -1,0 +1,7 @@
+node_modules
+dist
+photos
+data
+log
+.env
+backend/portfolio-backend

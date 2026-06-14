@@ -1,0 +1,60 @@
+.dashboard-admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 2rem 1rem;
+    width: 100%;
+}
+
+.dashboard-admin h1 {
+    font-family: "Italiana", serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: 0.02em;
+    margin-bottom: 2.5rem;
+}
+
+.dashboard-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.dashboard-admin h2 {
+    font-family: "Italiana", serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-admin .dashboard-button {
+    background: transparent;
+    border: 0.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.55rem 1rem;
+    font-size: 0.83rem;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    transition: background 150ms, border-color 150ms, color 150ms;
+    width: 100%;
+    margin: 0;
+}
+
+.dashboard-admin .dashboard-button:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: white;
+}
+
+.dashboard-admin .dashboard-button a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}

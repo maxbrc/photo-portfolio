@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    font-family: "Poppins", sans-serif;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scrollbar-gutter: stable;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100dvh;
+    background-color: black;
+}
+
+#root {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1em;
+    padding-top: 4rem;
+}
+
+a {
+    color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Italiana", serif;
+    text-align: center;
+}
+
+label:hover {
+    cursor: pointer;
+}

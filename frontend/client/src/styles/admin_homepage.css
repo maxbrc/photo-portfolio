@@ -1,0 +1,258 @@
+.admin-homepage {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.hp-save-btn {
+    margin-left: auto;
+    flex-shrink: 0;
+    padding: 0.34rem 0.75rem;
+    border-radius: 5px;
+    border: 0.5px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.78rem;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: background 150ms, border-color 150ms, color 150ms;
+}
+
+.hp-save-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.32);
+    color: white;
+}
+
+.hp-save-btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* ── Section card ─────────────────────────────────────────────────────── */
+
+.hp-section {
+    background: rgba(255, 255, 255, 0.02);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.hp-section-label {
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────── */
+
+.hp-hero-layout {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.hp-hero-img-col {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hp-hero-preview {
+    width: 88px !important;
+    max-width: 88px !important;
+    aspect-ratio: 2 / 3 !important;
+}
+
+.hp-about-preview {
+    width: 80px !important;
+    max-width: 80px !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 50% !important;
+}
+
+.hp-hero-fields {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding-top: 0.1rem;
+}
+
+/* ── Textarea ─────────────────────────────────────────────────────────── */
+
+.hp-textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.65;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.83rem;
+}
+
+.hp-textarea-tall {
+    min-height: 220px;
+}
+
+/* ── List rows (equipment + social entries) ───────────────────────────── */
+
+.hp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.hp-list-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hp-list-input {
+    flex: 1;
+    margin: 0;
+    min-width: 0;
+}
+
+.hp-list-remove {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 5px;
+    background: rgba(224, 112, 112, 0.07);
+    border: 0.5px solid rgba(224, 112, 112, 0.22);
+    color: rgba(224, 112, 112, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 150ms, border-color 150ms, color 150ms;
+    padding: 0;
+}
+
+.hp-list-remove:hover {
+    background: rgba(224, 112, 112, 0.16);
+    border-color: rgba(224, 112, 112, 0.48);
+    color: #e07070;
+}
+
+.hp-add-btn {
+    margin-top: 0.3rem !important;
+}
+
+/* ── Socials ──────────────────────────────────────────────────────────── */
+
+.hp-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.hp-social-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hp-social-type-label {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.32);
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.hp-social-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+/* read-only mailto: badge next to email entries */
+.hp-url-badge {
+    flex-shrink: 0;
+    height: 34px;
+    padding: 0 0.6rem;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.025);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+    font-size: 0.7rem;
+    font-family: "Poppins", sans-serif;
+    color: rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+    cursor: default;
+    user-select: none;
+}
+
+/* ── Loading state ────────────────────────────────────────────────────── */
+
+.hp-loading {
+    padding: 2rem 1.5rem;
+    font-family: "Poppins", sans-serif;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.85rem;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+    .admin-homepage {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .hp-section {
+        padding: 1rem;
+    }
+
+    /* Stack hero image above fields on narrow screens */
+    .hp-hero-layout {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hp-hero-img-col {
+        align-items: flex-start;
+    }
+
+    .hp-hero-preview {
+        width: 72px !important;
+        max-width: 72px !important;
+    }
+
+    /* Instagram: wrap handle + URL onto separate lines */
+    .hp-list-row {
+        flex-wrap: wrap;
+    }
+
+    .hp-list-input {
+        min-width: calc(100% - 42px);
+    }
+
+    .hp-url-badge {
+        max-width: 100%;
+        min-width: calc(100% - 42px);
+    }
+}

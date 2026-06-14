@@ -1,0 +1,30 @@
+{
+    "hero": {
+        "title": "Your Name",
+        "subtitle": "Your Subtitle",
+        "image_uuid": null
+    },
+    "socials": [
+        {
+            "type": "instagram",
+            "entries": [
+                { "handle": "@yourhandle", "url": "https://instagram.com/yourhandle" },
+                { "handle": "@yourhandle2", "url": "https://instagram.com/yourhandle2" }
+            ]
+        },
+        {
+            "type": "email",
+            "entries": [
+                { "handle": "your@email.com", "url": "mailto:your@email.com" }
+            ]
+        }
+    ],
+    "equipment": [
+        "Camera Body",
+        "Lens 1"
+    ],
+    "about": {
+        "text": "Write something about yourself here.",
+        "image_uuid": null
+    }
+}

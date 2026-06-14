@@ -1,0 +1,145 @@
+.red {
+    color: #C42030;
+}
+
+.back-btn {
+    display: block;
+    align-self: flex-start;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.38);
+    padding: 0.5rem 0 0 1rem;
+    transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.gallery {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.75rem 0.75rem 2.5rem;
+  box-sizing: border-box;
+  grid-template-columns: 1fr;
+  grid-auto-flow: dense;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  user-select: none;
+  display: block;
+  grid-row-end: span 2;
+  cursor: pointer;
+}
+
+.gallery img.wide {
+  aspect-ratio: 3 / 2;
+  grid-row-end: span 2;
+  display: unset;
+}
+
+.gallery .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    backdrop-filter: blur(10px) brightness(50%);
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    transition: opacity 300ms ease, visibility 300ms ease;
+}
+
+.gallery .backdrop.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 300ms ease, visibility 300ms ease;
+}
+
+.gallery .backdrop img {
+    height: auto;
+    width: min(90vw, calc(80vh * 2 / 3));
+    animation: zoomIn 300ms ease;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    cursor: default;
+}
+
+.gallery .backdrop img.wide {
+    width: min(90vw, calc(80vh * 3 / 2));
+}
+
+.gallery .backdrop.active img {
+    opacity: 1;
+    transition: opacity 300ms ease;
+}
+
+.gallery .backdrop .close-icon {
+    will-change: transform;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 2em;
+    aspect-ratio: 1 / 1;
+    align-self: flex-start;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.gallery .backdrop .close-icon:hover {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.96);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@media (min-width: 250px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery img.wide {
+      grid-column-end: span 2;
+  }
+}
+
+@media (min-width: 750px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery img.wide {
+    aspect-ratio: 4.1/3;
+  }
+}
+
+@media (min-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+}
+
