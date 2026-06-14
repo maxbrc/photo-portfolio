@@ -17,7 +17,7 @@ interface websiteConfig {
 }
 
 app.get("/{*any}", async (req, res) => {
-    let config: websiteConfig = { title: "Portfolio Title", description: "Description of your portfolio", url: "https://<yourPortfoliosAddress>" }
+    let config: websiteConfig = {} as websiteConfig
 
     try {
         const res = await fetch(`${req.protocol}://${req.host}/api/site-content`)
@@ -29,6 +29,8 @@ app.get("/{*any}", async (req, res) => {
         config = json.website
     } catch (e) {
         console.log("[ERROR] Failed to fetch website configuration: " + String(e))
+        res.sendStatus(500)
+        return
     }
 
     const html = renderToString(

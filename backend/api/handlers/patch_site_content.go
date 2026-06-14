@@ -11,6 +11,7 @@ import (
 )
 
 var allowedSiteContentKeys = map[string]bool{
+	"website":   true,
 	"hero":      true,
 	"socials":   true,
 	"equipment": true,
