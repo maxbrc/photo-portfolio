@@ -1,4 +1,9 @@
 FROM node:20-alpine AS builder
+
+LABEL org.opencontainers.image.source=https://github.com/maxbrc/photo-portfolio
+LABEL org.opencontainers.image.description="Node/React SSR container image for the photo-portfolio application"
+LABEL org.opencontainers.image.licenses=MIT
+
 WORKDIR /app
 COPY frontend/package*.json ./
 RUN npm ci

@@ -1,4 +1,9 @@
 interface SiteContent {
+    website: {
+        title: string;
+        description: string;
+        url: string;
+    };
     hero: {
         title: string
         subtitle: string
