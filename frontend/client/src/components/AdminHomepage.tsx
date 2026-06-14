@@ -48,7 +48,6 @@ function AdminHomepage({ validateSession, messages, createMessage }: {
         }
     };
 
-    // ── Equipment ──────────────────────────────────────────────────────────
     const updateEquipment = (i: number, val: string) =>
         setContent(c => {
             if (!c) return null;
@@ -63,7 +62,6 @@ function AdminHomepage({ validateSession, messages, createMessage }: {
     const addEquipment = () =>
         setContent(c => c ? { ...c, equipment: [...c.equipment, ""] } : null);
 
-    // ── Socials ────────────────────────────────────────────────────────────
     const updateSocialEntry = (si: number, ei: number, changes: Partial<{ handle: string; url: string }>) =>
         setContent(c => {
             if (!c) return null;
@@ -111,8 +109,6 @@ function AdminHomepage({ validateSession, messages, createMessage }: {
         <>
             <MessageList messages={messages} />
             <div className="admin-homepage">
-
-                {/* ── Header ─────────────────────────────────────────────── */}
                 <div className="albums-top" style={{ marginBottom: 0 }}>
                     <img
                         src="/assets/home.svg"
@@ -125,9 +121,7 @@ function AdminHomepage({ validateSession, messages, createMessage }: {
                         <IconCheck size={14} stroke={1.5} />
                         {saving ? "Speichert…" : "Speichern"}
                     </button>
-                </div>
-
-                {/* ── Hero ───────────────────────────────────────────────── */}
+                </div>   
                 <div className="hp-section">
                     <div className="hp-section-label">Hero</div>
                     <div className="hp-hero-layout">
@@ -166,8 +160,6 @@ function AdminHomepage({ validateSession, messages, createMessage }: {
                         </div>
                     </div>
                 </div>
-
-                {/* ── Über mich ──────────────────────────────────────────── */}
                 <div className="hp-section">
                     <div className="hp-section-label">Über mich</div>
                     <div className="hp-hero-layout">
@@ -196,8 +188,6 @@ function AdminHomepage({ validateSession, messages, createMessage }: {
                         </div>
                     </div>
                 </div>
-
-                {/* ── Equipment ──────────────────────────────────────────── */}
                 <div className="hp-section">
                     <div className="hp-section-label">Equipment</div>
                     <div className="hp-list">
@@ -219,8 +209,6 @@ function AdminHomepage({ validateSession, messages, createMessage }: {
                         </button>
                     </div>
                 </div>
-
-                {/* ── Socials ────────────────────────────────────────────── */}
                 <div className="hp-section">
                     <div className="hp-section-label">Socials</div>
                     <div className="hp-socials">
@@ -271,8 +259,37 @@ function AdminHomepage({ validateSession, messages, createMessage }: {
                         ))}
                     </div>
                 </div>
-
-                {/* ── Impressum ──────────────────────────────────────────── */}
+                <div className="hp-section">
+                    <div className="hp-section-label">Website</div>
+                    <div className="hp-hero-fields">
+                        <div className="albums-field">
+                            <span className="albums-flabel">Titel</span>
+                            <input
+                                className="albums-finput"
+                                value={content.website.title}
+                                onChange={e => setContent(c => c ? { ...c, website: { ...c.website, title: e.target.value } } : null)}
+                            />
+                        </div>
+                        <div className="albums-field">
+                            <span className="albums-flabel">Beschreibung</span>
+                            <input
+                                className="albums-finput"
+                                value={content.website.description}
+                                onChange={e => setContent(c => c ? { ...c, website: { ...c.website, description: e.target.value } } : null)}
+                            />
+                        </div>
+                        <div className="albums-field">
+                            <span className="albums-flabel">Basis URL (!)</span>
+                            <input
+                                className="albums-finput"
+                                value={content.website.url}
+                                placeholder={window !== undefined ? `${window.location.protocol}//${window.location.host}` : ""}
+                                onChange={e => setContent(c => c ? { ...c, website: { ...c.website, url: e.target.value } } : null)}
+                            />
+                        </div>
+                    </div>
+                    <span className="albums-flabel"><br/>Vorsicht: Diese Werte nicht zu oft ändern! Sie sind essentiell für das Google Listing.</span>
+                </div>
                 <div className="hp-section">
                     <div className="hp-section-label">Impressum</div>
                     <textarea
@@ -284,8 +301,6 @@ function AdminHomepage({ validateSession, messages, createMessage }: {
                 </div>
 
             </div>
-
-            {/* ── Image browser overlay ──────────────────────────────────── */}
             {imagePicker !== null && (
                 <div className="dropdown-image-browser" onClick={() => setImagePicker(null)}>
                     <div onClick={e => e.stopPropagation()}>
