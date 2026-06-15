@@ -9,7 +9,18 @@ import (
 )
 
 func DeleteImage(uuid string) error {
-	err := db.DeleteImage(uuid)
+	albums, err := db.GetAlbums()
+	if err != nil {
+		return fmt.Errorf("failed to get albums from db: %v", err)
+	}
+
+	for _, album := range albums {
+		if album.CoverImageUUID != nil && *album.CoverImageUUID == uuid {
+			return fmt.Errorf("can't delete cover image of album %s", album.Name)
+		}
+	}
+
+	err = db.DeleteImage(uuid)
 	if err != nil {
 		return fmt.Errorf("failed to delete image in db: %v", err)
 	}
