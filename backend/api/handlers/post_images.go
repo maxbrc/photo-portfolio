@@ -60,7 +60,7 @@ func PostImages(w http.ResponseWriter, r *http.Request) {
 		result := <-resultChannel
 
 		if result.err != nil {
-			http.Error(w, fmt.Sprintf("failed to add image: %v", err), 500)
+			http.Error(w, fmt.Sprintf("failed to add image: %v", result.err), 500)
 			return
 		}
 
