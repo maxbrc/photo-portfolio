@@ -78,3 +78,27 @@ Now just start the project:
 ```
 docker compose up -d
 ```
+# Spelunking
+## Application data
+Inside the mounted `data` folder you will find the following:
+- `config.json`
+- `photos`
+- `secrets`
+### config.json
+Arguably deserving better naming, this file contains the website/homepage configuration data. This would simply make no sense to store in the database, so for convenience, it's stored in this JSON file.
+All of this is editable through the web interface, so don't bother with manual editing.
+### photos
+This is where the actual image files lie. If you go inside this directory, you will see two folders: `originals` and `derivatives`.
+The high-quality original WebP conversions lie in the `originals` folder, while the cached and resized versions sit in `derivatives`. The derivative image filename is composed like this: `width_height_filename.webp`.
+### secrets
+This directory simply contains a single file with binary data. This directory has tighter permissions since it contains exactly 32 bytes that are used to seed the Ed25519 private key, which is used to sign the JWT's (authorization tokens).
+## Development and build guide
+Clone the repository. Then copy the `.env.example` to `.env`.
+### The right way
+You need both the Go and NodeJS runtime installed. Don't forget a running MariaDB/MySQL database and edit the .env accordingly. In separate terminal windows, you want to open `/backend` and `/frontend` respectively.
+For the backend, run `go run ./cmd/main.go`. You will need to Ctrl+C and re-run for every change on the backend. For the frontend, run `npm run dev`. This watches the frontend client, but not the frontend server (which will rarely change anyway).
+#### Building
+For the backend, run `go build -o server ./cmd/main.go`. The only folder and file you have to keep is config/config.default.json. For the frontend, run `npm run build`. This will give you the final files in the `server/dist` and `client/dist` directories.
+Along with this, we don't bundle Node modules, so you will need to keep the two `dist` folders, and the `package.json` and `package-lock.json`. On the target machine, run `npm ci --omit=dev` to install the production dependencies.
+## Docker
+I don't use this, but you could develop using Docker containers. Use the file `docker/docker-compose.dev.yml`. To build and run, run `docker compose up -d --build`
