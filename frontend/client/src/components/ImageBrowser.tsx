@@ -269,7 +269,14 @@ function ImageBrowser({ validateSession, createMessage, selectedImageCallbackFn,
     }
 
     const postImage = async () => {
-        const tokenToUse = await validateSession()
+        let tokenToUse: string | null = null
+        try {
+            tokenToUse = await validateSession()
+        } catch (e) {
+            createMessage(MessageBadgeTypes.ERROR, "Fehler beim autorisieren der Sitzung: " + getErrorMessage(e))
+            return
+        }
+
         if (!tokenToUse) return
 
         if (files === null) {
@@ -293,9 +300,12 @@ function ImageBrowser({ validateSession, createMessage, selectedImageCallbackFn,
             body: formData,
         });
 
-        if (!res.ok) createMessage(MessageBadgeTypes.ERROR, `Fehler beim Hochladen: ${await res.text()}`);
+        if (!res.ok) {
+            createMessage(MessageBadgeTypes.ERROR, `Fehler beim Hochladen: ${await res.text()}`);
+            return;
+        }
 
-        const json: { [key: string]: string } = await res.json();
+        const json: Record<string, string> = await res.json();
 
         if (currentAlbum !== null) {
             const newImageUUIDs = Object.values(json)
@@ -303,7 +313,7 @@ function ImageBrowser({ validateSession, createMessage, selectedImageCallbackFn,
             await insertImagesIntoAssignments(newImageUUIDs, currentAlbum)
         }
 
-        if (createMessage !== undefined) createMessage(MessageBadgeTypes.SUCCESS, "Bild(er) erfolgreich hochgeladen")
+        createMessage(MessageBadgeTypes.SUCCESS, "Bild(er) erfolgreich hochgeladen")
         fetchImages()
     }
 
