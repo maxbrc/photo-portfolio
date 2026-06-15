@@ -1,10 +1,14 @@
 package handlers
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"strconv"
+	"strings"
+
+	"golang.org/x/sync/semaphore"
 
 	"github.com/maxbrc/photo-portfolio/backend/internal/auth"
 	"github.com/maxbrc/photo-portfolio/backend/internal/images"
@@ -39,6 +43,7 @@ func PostImages(w http.ResponseWriter, r *http.Request) {
 
 	resultChannel := make(chan uploadResult, fileCount)
 
+	sem := semaphore.NewWeighted(2)
 	newUUIDs := make(map[string]string, 0) // original filename -> uuid
 	for i := range fileCount {
 		file, handler, err := r.FormFile(fmt.Sprintf("file%v", i))
@@ -48,12 +53,20 @@ func PostImages(w http.ResponseWriter, r *http.Request) {
 		}
 		defer file.Close()
 
+		isJPG := strings.HasSuffix(handler.Filename, ".jpg")
+
 		go func() {
-			uuid, err := images.AddImage(file)
+			err := sem.Acquire(context.Background(), 1)
+			if err != nil {
+				resultChannel <- uploadResult{"", "", fmt.Errorf("failed to acquire semaphore: %v", err)}
+				return
+			}
+			defer sem.Release(1)
+
+			uuid, err := images.AddImage(file, isJPG)
 
 			resultChannel <- uploadResult{handler.Filename, uuid, err}
 		}()
-
 	}
 
 	for range fileCount {
