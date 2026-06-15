@@ -31,13 +31,9 @@ func AddImage(data io.Reader, isJPG bool) (string, error) {
 		Landscape: isLandscape,
 	}
 
-	err = db.InsertImage(imageObject)
-	if err != nil {
-		return "", fmt.Errorf("failed to insert image into database: %v", err)
-	}
-
 	newImageFilename := newImageUUID + ".webp"
-	f, err := os.Create(fmt.Sprintf("data/photos/originals/%s", newImageFilename))
+	newImageFilepath := fmt.Sprintf("data/photos/originals/%s", newImageFilename)
+	f, err := os.Create(newImageFilepath)
 	if err != nil {
 		db.DeleteImage(newImageUUID)
 		return "", fmt.Errorf("failed to create new image file: %v", err)
@@ -55,6 +51,12 @@ func AddImage(data io.Reader, isJPG bool) (string, error) {
 	err = webp.Encode(f, image, options)
 	if err != nil {
 		return "", fmt.Errorf("failed to encode to webp: %v", err)
+	}
+
+	err = db.InsertImage(imageObject)
+	if err != nil {
+		os.Remove(newImageFilepath)
+		return "", fmt.Errorf("failed to insert image into database: %v", err)
 	}
 
 	return newImageUUID, nil
