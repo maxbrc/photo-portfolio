@@ -132,7 +132,7 @@ function AdminHomepage({ validateSession, messages, createMessage }: {
                                 onClick={() => setImagePicker('hero')}
                             >
                                 {content.hero.image_uuid
-                                    ? <img src={`/photos/${content.hero.image_uuid}.webp?width=300&height=450`} />
+                                    ? <img src={`/photos/${content.hero.image_uuid}.webp?width=300&height=0`} />
                                     : <IconPhoto size={24} stroke={1} />
                                 }
                                 <div className="albums-sel-overlay">
@@ -170,7 +170,7 @@ function AdminHomepage({ validateSession, messages, createMessage }: {
                                 onClick={() => setImagePicker('about')}
                             >
                                 {content.about.image_uuid
-                                    ? <img src={`/photos/${content.about.image_uuid}.webp?width=200&height=200`} />
+                                    ? <img src={`/photos/${content.about.image_uuid}.webp?width=200&height=0`} />
                                     : <IconUserCircle size={28} stroke={0.8} />
                                 }
                                 <div className="albums-sel-overlay">
