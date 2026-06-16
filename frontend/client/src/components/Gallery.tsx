@@ -65,7 +65,7 @@ function Gallery() {
     }, [albumsFetched, albumName])
 
     useEffect(() => {
-        document.body.style.overflow = modal == null ? "auto" : "hidden"
+        document.documentElement.style.overflow = modal == null ? "auto" : "hidden"
     }, [modal])
 
     if (!albumName) {
