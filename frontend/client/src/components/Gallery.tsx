@@ -121,17 +121,15 @@ function Gallery() {
                                         const dpr = window.devicePixelRatio || 1;
                                         const { height, width } = e.currentTarget.getBoundingClientRect();
                                         const roundedHeight = Math.ceil(height * dpr / 200) * 200
-                                        const roundedWidth = Math.ceil(width * dpr / 200) * 200
-                                        setModalLandscapeDimensions({ height: roundedHeight, width: roundedWidth })
+                                        setModalLandscapeDimensions({ height: roundedHeight, width: 0 })
                                         setReadyToLoadModalLandscape(true)
                                     }
                                 } else  {
                                     if (modalPortraitDimensions === null) {
                                         const dpr = window.devicePixelRatio || 1;
                                         const { height, width } = e.currentTarget.getBoundingClientRect();
-                                        const roundedHeight = Math.ceil(height * dpr / 200) * 200
                                         const roundedWidth = Math.ceil(width * dpr / 200) * 200
-                                        setModalPortraitDimensions({ height: roundedHeight, width: roundedWidth })
+                                        setModalPortraitDimensions({ height: 0, width: roundedWidth })
                                         setReadyToLoadModalPortrait(true)
                                     }
                                 }
@@ -150,9 +148,8 @@ function Gallery() {
                                 e => {
                                     const dpr = window.devicePixelRatio || 1;
                                     const { height, width } = e.currentTarget.getBoundingClientRect();
-                                    const roundedHeight = Math.ceil(height * dpr / 200) * 200
                                     const roundedWidth = Math.ceil(width * dpr / 200) * 200
-                                    setPortraitDimensions({ height: roundedHeight, width: roundedWidth })
+                                    setPortraitDimensions({ height: 0, width: roundedWidth })
                                 }
                             }
                         />
@@ -163,8 +160,7 @@ function Gallery() {
                                     const dpr = window.devicePixelRatio || 1;
                                     const { height, width } = e.currentTarget.getBoundingClientRect();
                                     const roundedHeight = Math.ceil(height * dpr / 200) * 200
-                                    const roundedWidth = Math.ceil(width * dpr / 200) * 200
-                                    setLandscapeDimensions({ height: roundedHeight, width: roundedWidth })
+                                    setLandscapeDimensions({ height: roundedHeight, width: 0 })
                                 }
                             }
                             className="wide"

@@ -47,7 +47,7 @@ func GetPhotos(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if width <= 0 || height <= 0 || width > 4000 || height > 4000 {
+	if width < 0 || height < 0 || width > 4000 || height > 4000 {
 		http.Error(w, "Invalid dimensions (must be between 1 and 4000)", http.StatusBadRequest)
 		return
 	}
@@ -74,7 +74,7 @@ func GetPhotos(w http.ResponseWriter, r *http.Request) {
 			return true
 		}
 
-		dst := imaging.Fill(src, width, height, imaging.Center, imaging.Lanczos)
+		dst := imaging.Resize(src, width, height, imaging.Lanczos)
 
 		f, err := os.Create(resizedPath)
 		if err != nil {
