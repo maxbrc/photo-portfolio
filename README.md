@@ -95,7 +95,7 @@ This directory simply contains a single file with binary data. This directory ha
 ## Development and build guide
 Clone the repository. Then copy the `.env.example` to `.env`.
 ### The right way
-You need both the Go and NodeJS runtime installed. Don't forget a running MariaDB/MySQL database and edit the .env accordingly. In separate terminal windows, you want to open `/backend` and `/frontend` respectively.
+You need both the Go and NodeJS runtime installed. Don't forget a running MariaDB/MySQL database and to edit the .env accordingly. In separate terminal windows, you want to open `/backend` and `/frontend` respectively.
 For the backend, run `go run ./cmd/main.go`. You will need to Ctrl+C and re-run for every change on the backend. For the frontend, run `npm run dev`. This watches the frontend client, but not the frontend server (which will rarely change anyway).
 #### Building
 For the backend, run `go build -o server ./cmd/main.go`. The only folder and file you have to keep is config/config.default.json. For the frontend, run `npm run build`. This will give you the final files in the `server/dist` and `client/dist` directories.
