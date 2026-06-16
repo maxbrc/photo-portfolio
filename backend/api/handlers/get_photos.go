@@ -1,12 +1,15 @@
 package handlers
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	"golang.org/x/sync/semaphore"
 
 	"github.com/chai2010/webp"
 	"github.com/disintegration/imaging"
@@ -16,6 +19,8 @@ const (
 	originalsDir   = "data/photos/originals"
 	derivativesDir = "data/photos/derivatives"
 )
+
+var sem *semaphore.Weighted = semaphore.NewWeighted(4)
 
 func GetPhotos(w http.ResponseWriter, r *http.Request) {
 	path := strings.TrimPrefix(r.URL.Path, "/photos/")
@@ -61,15 +66,35 @@ func GetPhotos(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	dst := imaging.Fill(src, width, height, imaging.Center, imaging.Lanczos)
+	ok := func() bool {
+		err := sem.Acquire(context.Background(), 1)
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Failed to acquire semaphore: %v", err), 500)
+			return false
+		}
+		defer sem.Release(1)
 
-	f, err := os.Create(resizedPath)
-	if err != nil {
-		http.Error(w, fmt.Sprintf("Failed to create resized image file: %v", err), 500)
+		dst := imaging.Fill(src, width, height, imaging.Center, imaging.Lanczos)
+
+		f, err := os.Create(resizedPath)
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Failed to create resized image file: %v", err), 500)
+			return false
+		}
+		defer f.Close()
+
+		err = webp.Encode(f, dst, &webp.Options{Quality: 90})
+		if err != nil {
+			http.Error(w, fmt.Sprintf("failed to encode resized image to WebP: %v", err), 500)
+			return false
+		}
+
+		return true
+	}()
+
+	if !ok {
 		return
 	}
-
-	err = webp.Encode(f, dst, &webp.Options{Lossless: true})
 
 	http.ServeFile(w, r, resizedPath)
 }
