@@ -314,6 +314,7 @@ function ImageBrowser({ validateSession, createMessage, selectedImageCallbackFn,
         }
 
         createMessage(MessageBadgeTypes.SUCCESS, "Bild(er) erfolgreich hochgeladen")
+        setFiles(null)
         fetchImages()
     }
 
