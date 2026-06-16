@@ -191,7 +191,7 @@ function AdminAlbums({ validateSession, messages, createMessage, accessToken }: 
                     {albums.map((el) => (
                         <div className="album-card" key={el.id} onClick={() => setEditAlbum({ album: el })}>
                             <div className="album-card-cover">{el.cover_image_uuid
-                                                            ? <img src={`/photos/${el.cover_image_uuid}.webp?width=400&height=400`} />
+                                                            ? <img src={`/photos/${el.cover_image_uuid}.webp?width=400&height=0`} />
                                                             : <IconPhoto size={32} stroke={1} />
                                                         }</div>
                             <div className="album-card-edit">
@@ -240,7 +240,7 @@ function AdminAlbums({ validateSession, messages, createMessage, accessToken }: 
                                     <span className="albums-flabel">Coverbild</span>
                                     <div className="albums-cover-preview" onClick={e => { e.stopPropagation(); e.preventDefault(); setSelectorOpen(true) }}>
                                         {editAlbum.album.cover_image_uuid
-                                            ? <img src={`/photos/${editAlbum.album.cover_image_uuid}.webp?width=400&height=400`} />
+                                            ? <img src={`/photos/${editAlbum.album.cover_image_uuid}.webp?width=400&height=0`} />
                                             : <IconPhoto size={28} stroke={1} />
                                         }
                                         <div className="albums-sel-overlay">
