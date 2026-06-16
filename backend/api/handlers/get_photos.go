@@ -60,12 +60,6 @@ func GetPhotos(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	src, err := imaging.Open(originalPath)
-	if err != nil {
-		http.Error(w, "Image not found", http.StatusNotFound)
-		return
-	}
-
 	ok := func() bool {
 		err := sem.Acquire(context.Background(), 1)
 		if err != nil {
@@ -73,6 +67,12 @@ func GetPhotos(w http.ResponseWriter, r *http.Request) {
 			return false
 		}
 		defer sem.Release(1)
+
+		src, err := imaging.Open(originalPath)
+		if err != nil {
+			http.Error(w, "Image not found", http.StatusNotFound)
+			return true
+		}
 
 		dst := imaging.Fill(src, width, height, imaging.Center, imaging.Lanczos)
 
