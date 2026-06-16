@@ -393,7 +393,7 @@ function ImageBrowser({ validateSession, createMessage, selectedImageCallbackFn,
                                     if (selectedImageCallbackFn !== undefined) selectedImageCallbackFn(el)
                                 }}
                             >
-                                <img loading="lazy" src={`/photos/${el.uuid + ".webp"}?${el.landscape ? "height=333&width=500": "height=500&width=333"}`} />
+                                <img loading="lazy" src={`/photos/${el.uuid + ".webp"}?${el.landscape ? "height=333&width=0": "height=0&width=333"}`} />
                                 <div className={focusedImage === el.uuid ? "image-settings" : "image-settings hidden"}>
                                     <div className="order-row">
                                         <div className="order-btn" onClick={(e) => { e.stopPropagation(); moveImage(el.uuid, true) }}>

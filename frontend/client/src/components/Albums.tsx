@@ -27,7 +27,7 @@ function Albums() {
                             albums.map(album => {
                                 if (album.id === 0) return
                                 return (
-                                        <Link key={album.id} to={`/gallery/${toSlug(album.name)}`}><div><img src={`/photos/${album.cover_image_uuid}.webp?width=400&height=400`} alt="Albumcover" /><span>{album.name}</span></div></Link>
+                                        <Link key={album.id} to={`/gallery/${toSlug(album.name)}`}><div><img src={`/photos/${album.cover_image_uuid}.webp?width=400&height=0`} alt="Albumcover" /><span>{album.name}</span></div></Link>
                                 )
                             })
                         ) : (

@@ -57,6 +57,10 @@ services:
       - "3000:3000"
     networks:
       - app
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
 
   frontend:
     image: ghcr.io/maxbrc/photo-portfolio/frontend:latest
