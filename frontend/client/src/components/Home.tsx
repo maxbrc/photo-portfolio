@@ -8,6 +8,7 @@ import "../styles/home.css"
 
 function Home() {
     const [ viewportHeight, setViewportHeight ] = useState("100dvh");
+    const [ viewportWidth, setViewportWidth ] = useState<number | null>(null)
     const [ authenticated, setAuthenticated ] = useState(false);
     const [ siteContent, setSiteContent ] = useState<SiteContent | null>(null)
     const [ loading, setLoading ] = useState(true)
@@ -16,19 +17,16 @@ function Home() {
     const navigate = useNavigate();
 
     useEffect(() => {
-    if (typeof window === "undefined") return; // SSR guard
+    if (typeof window === "undefined") return;
 
     const handleOrientationChange = () => {
-        // Delay ensures correct height after rotation settles
         setTimeout(() => {
         setViewportHeight(`${window.innerHeight}px`);
         }, 50);
     };
 
-    // Initial update on mount
     handleOrientationChange();
 
-    // Only listen on client
     window.addEventListener("orientationchange", handleOrientationChange);
 
     return () => {
@@ -62,6 +60,9 @@ function Home() {
     }
 
     useEffect(() => {
+        const dpr = window.devicePixelRatio || 1
+        setViewportWidth(Math.ceil(window.innerWidth * dpr / 200) * 200)
+        
         fetchSiteContent()
     }, [])
 
@@ -84,7 +85,7 @@ function Home() {
             }
             <section className="home-banner" style={{ height: viewportHeight }}>
                 {siteContent?.hero.image_uuid && (
-                    <img className="home-banner-img" src={`/photos/${siteContent.hero.image_uuid}.webp?width=1920&height=1080`} alt="Hero" />
+                    <img className="home-banner-img" src={viewportWidth === null ? "/assets/black.svg" : `/photos/${siteContent.hero.image_uuid}.webp?width=${viewportWidth}&height=0`} alt="Hero" />
                 )}
                 <div className="home-banner-content">
                     <h1>{siteContent?.hero.title ?? "Richard Freier"}</h1>
@@ -107,7 +108,7 @@ function Home() {
             <section>
                 <h3>About Me</h3>
                 {siteContent?.about.image_uuid
-                    ? <img className="profile" src={`/photos/${siteContent.about.image_uuid}.webp?width=200&height=200`} alt="Profilbild" />
+                    ? <img className="profile" src={`/photos/${siteContent.about.image_uuid}.webp?width=200&height=0`} alt="Profilbild" />
                     : <IconUserCircle className="profile-placeholder" size={112} stroke={0.6} />
                 }
                 <span>
