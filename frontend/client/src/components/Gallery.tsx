@@ -119,19 +119,19 @@ function Gallery() {
                                 if (modal.landscape) {
                                     if (modalLandscapeDimensions === null) {
                                         const dpr = window.devicePixelRatio || 1;
-                                        const { height, width } = e.currentTarget.getBoundingClientRect();
+                                        const { height } = e.currentTarget.getBoundingClientRect();
                                         const roundedHeight = Math.ceil(height * dpr / 200) * 200
                                         setModalLandscapeDimensions({ height: roundedHeight, width: 0 })
-                                        setReadyToLoadModalLandscape(true)
                                     }
+                                    setReadyToLoadModalLandscape(true)
                                 } else  {
                                     if (modalPortraitDimensions === null) {
                                         const dpr = window.devicePixelRatio || 1;
-                                        const { height, width } = e.currentTarget.getBoundingClientRect();
+                                        const { width } = e.currentTarget.getBoundingClientRect();
                                         const roundedWidth = Math.ceil(width * dpr / 200) * 200
                                         setModalPortraitDimensions({ height: 0, width: roundedWidth })
-                                        setReadyToLoadModalPortrait(true)
                                     }
+                                    setReadyToLoadModalPortrait(true)
                                 }
                             }
                         }
@@ -147,7 +147,7 @@ function Gallery() {
                             onLoad={
                                 e => {
                                     const dpr = window.devicePixelRatio || 1;
-                                    const { height, width } = e.currentTarget.getBoundingClientRect();
+                                    const { width } = e.currentTarget.getBoundingClientRect();
                                     const roundedWidth = Math.ceil(width * dpr / 200) * 200
                                     setPortraitDimensions({ height: 0, width: roundedWidth })
                                 }
@@ -158,7 +158,7 @@ function Gallery() {
                             onLoad={
                                 e => {
                                     const dpr = window.devicePixelRatio || 1;
-                                    const { height, width } = e.currentTarget.getBoundingClientRect();
+                                    const { height } = e.currentTarget.getBoundingClientRect();
                                     const roundedHeight = Math.ceil(height * dpr / 200) * 200
                                     setLandscapeDimensions({ height: roundedHeight, width: 0 })
                                 }
@@ -173,7 +173,11 @@ function Gallery() {
                             return (
                                     <img
                                         key={img.uuid}
-                                        onClick={() => setModal(img)}
+                                        onClick={() => {
+                                            setModal(img);
+                                            setReadyToLoadModalPortrait(false)
+                                            setReadyToLoadModalLandscape(false)
+                                        }}
                                         className={img.landscape ? "wide": ""}
                                         src={
                                             "/photos/" + img.uuid + ".webp" + (img.landscape ? `?width=${landscapeDimensions!.width}&height=${landscapeDimensions!.height}` : `?width=${portraitDimensions!.width}&height=${portraitDimensions!.height}`)
