@@ -4,6 +4,9 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"time"
+
+	"golang.org/x/time/rate"
 
 	"github.com/maxbrc/photo-portfolio/backend/api/handlers"
 	"github.com/maxbrc/photo-portfolio/backend/config"
@@ -12,6 +15,8 @@ import (
 func SetupRoutes() {
 	nodeURL, _ := url.Parse(config.AppConfig.NodeURL)
 	nodeProxy := httputil.NewSingleHostReverseProxy(nodeURL)
+
+	loginLimiter := newLoginRateLimiter(rate.Every(10*time.Second), 5, 3*time.Minute)
 
 	mux := http.NewServeMux()
 
@@ -40,7 +45,7 @@ func SetupRoutes() {
 	mux.HandleFunc("PATCH /api/users/{user_id}", handlers.PatchUsers)
 	mux.HandleFunc("DELETE /api/users/{username}", handlers.DeleteUsers)
 
-	mux.HandleFunc("POST /api/login", handlers.AuthenticateUser)
+	mux.HandleFunc("POST /api/login", loginLimiter.Middleware(handlers.AuthenticateUser))
 	mux.HandleFunc("GET /api/refresh-token", handlers.RefreshToken)
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

@@ -205,7 +205,7 @@ function ImageBrowser({ validateSession, createMessage, selectedImageCallbackFn,
             return
         }
 
-        createMessage(MessageBadgeTypes.INFO, "Bitte beachte, dass die Anordnung je nach Gerätetyp leicht variiert! Aktualisierung folgt nach 5 Sekunden ohne Aktion.", true)
+        createMessage(MessageBadgeTypes.INFO, "Bitte beachte, dass die Anordnung je nach Gerätetyp leicht variiert! Aktualisierung folgt nach 3 Sekunden ohne Aktion.", true)
 
         const newAssignments = {...albumImageAssignments[currentAlbum]}
         const sorted = Object.entries(newAssignments).sort(([, a], [, b]) => a - b)
@@ -227,7 +227,7 @@ function ImageBrowser({ validateSession, createMessage, selectedImageCallbackFn,
             } catch (e) {
                 createMessage(MessageBadgeTypes.ERROR, getErrorMessage(e))
             }
-        }, 5000)
+        }, 3000)
     }
 
     const insertImagesIntoAssignments = async (imageUUIDs: string[], intoAlbum: number): Promise<Record<string, number>> => {
