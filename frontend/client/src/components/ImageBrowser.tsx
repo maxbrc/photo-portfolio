@@ -13,6 +13,7 @@ function ImageBrowser({ validateSession, createMessage, selectedImageCallbackFn,
     const [ images, setImages ] = useState<Image[]>([]);
     const [ files, setFiles ] = useState<FileList | null>(null);
     const [ focusedImage, setFocusedImage ] = useState<string | null>(null);
+    const [ focusedImageHeight, setFocusedImageHeight ] = useState<number | null>(null);
     const [ moreSettingsOpen, setMoreSettingsOpen ] = useState<boolean>(false);
     const [ currentAlbum, setCurrentAlbum ] = useState<number | null>(preselectAlbumID === undefined ? null : preselectAlbumID);
     const [ uploadOngoing, setUploadOngoing ] = useState<boolean>(false);
@@ -386,8 +387,9 @@ function ImageBrowser({ validateSession, createMessage, selectedImageCallbackFn,
                                     if (focusedImage === el.uuid) {
                                         handleGlobalClick()
                                     } else {
-                                        setMoreSettingsOpen(false)
+                                        closeAllWindows()
                                         setFocusedImage(el.uuid)
+                                        setFocusedImageHeight(e.currentTarget.getBoundingClientRect().height)
                                     }
 
                                     if (selectedImageCallbackFn !== undefined) selectedImageCallbackFn(el)
@@ -414,6 +416,9 @@ function ImageBrowser({ validateSession, createMessage, selectedImageCallbackFn,
                                     <div
                                         className={`more-panel ${moreSettingsOpen ? "open" : ""}`}
                                         onClick={e => e.stopPropagation()}
+                                        style={focusedImage === el.uuid && focusedImageHeight
+                                            ? { ["--dropdown-max-height" as string]: `${Math.max(focusedImageHeight - 96, 64)}px` } as React.CSSProperties
+                                            : undefined}
                                     >
                                         <div className="more-action album-section">
                                             <div className="album-label">Album</div>

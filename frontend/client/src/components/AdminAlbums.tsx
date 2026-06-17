@@ -35,7 +35,7 @@ function AdminAlbums({ validateSession, messages, createMessage, accessToken }: 
             return
         }
 
-        if (editAlbum.album.name === "" || editAlbum.album.cover_image_uuid === null) {
+        if (editAlbum.album.name === "") {
             createMessage(MessageBadgeTypes.INFO, "Bitte Name und Bild vergeben")
             return
         }
@@ -105,8 +105,8 @@ function AdminAlbums({ validateSession, messages, createMessage, accessToken }: 
             return
         }
 
-        if (editAlbum.album.name === "" || editAlbum.album.cover_image_uuid === null) {
-            createMessage(MessageBadgeTypes.INFO, "Bitte Name und Bild vergeben")
+        if (editAlbum.album.name === "") {
+            createMessage(MessageBadgeTypes.INFO, "Bitte Name vergeben")
             return
         }
 
@@ -128,6 +128,7 @@ function AdminAlbums({ validateSession, messages, createMessage, accessToken }: 
             createMessage(MessageBadgeTypes.ERROR, `Fehler: ${text}`)
         }
 
+        if (editAlbum.album.cover_image_uuid === null) createMessage(MessageBadgeTypes.WARNING, "Dieses Album hat kein Coverbild")
         setEditAlbum(null)
         fetchAlbums()
     }

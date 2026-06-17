@@ -54,8 +54,21 @@
     border-radius: 5px;
     backdrop-filter: blur(8px);
     z-index: 999;
-    overflow: hidden;
+    max-height: var(--dropdown-max-height, none);
+    overflow-y: auto;
+    overflow-x: hidden;
     list-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.album-selector .dropdown::-webkit-scrollbar {
+    width: 5px;
+}
+
+.album-selector .dropdown::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
 }
 
 .album-selector .dropdown li {
@@ -67,6 +80,8 @@
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     transition: background 120ms;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .album-selector .dropdown li:hover {
