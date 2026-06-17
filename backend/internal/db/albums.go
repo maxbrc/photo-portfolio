@@ -29,7 +29,7 @@ func GetAlbums() ([]*models.Album, error) {
 }
 
 func ReplaceAlbum(album *models.Album) error {
-	_, err := db.Exec("UPDATE albums SET id=?, name=?, cover_image_uuid=?, rank=? WHERE id=?", album.ID, album.Name, album.CoverImageUUID, album.ID, album.Rank)
+	_, err := db.Exec("UPDATE albums SET name=?, cover_image_uuid=?, rank=? WHERE id=?", album.Name, album.CoverImageUUID, album.Rank, album.ID)
 	if err != nil {
 		return fmt.Errorf("failed to exec db: %v", err)
 	}
