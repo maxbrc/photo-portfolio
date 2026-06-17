@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import { IconPhoto } from "@tabler/icons-react";
 
 import { Album } from "../types/albums";
 
@@ -25,9 +26,17 @@ function Albums() {
                     {
                         albums.length > 0 ? (
                             albums.map(album => {
-                                if (album.id === 0) return
                                 return (
-                                        <Link key={album.id} to={`/gallery/${toSlug(album.name)}`}><div><img src={`/photos/${album.cover_image_uuid}.webp?width=400&height=0`} alt="Albumcover" /><span>{album.name}</span></div></Link>
+                                        <Link key={album.id} to={`/gallery/${toSlug(album.name)}`}>
+                                            <div>
+                                                {
+                                                    album.cover_image_uuid
+                                                    ? <img src={`/photos/${album.cover_image_uuid}.webp?width=400&height=0`} alt="Albumcover" />
+                                                    : <IconPhoto size={64} stroke={1} />
+                                                }
+                                                <span>{album.name}</span>
+                                            </div>
+                                        </Link>
                                 )
                             })
                         ) : (
