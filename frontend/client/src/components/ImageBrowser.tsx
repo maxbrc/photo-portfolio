@@ -386,7 +386,7 @@ function ImageBrowser({ validateSession, createMessage, selectedImageCallbackFn,
                                     if (focusedImage === el.uuid) {
                                         handleGlobalClick()
                                     } else {
-                                        setMoreSettingsOpen(false)
+                                        closeAllWindows()
                                         setFocusedImage(el.uuid)
                                     }
 
