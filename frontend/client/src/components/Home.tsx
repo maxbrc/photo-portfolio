@@ -61,7 +61,7 @@ function Home() {
 
     useEffect(() => {
         const dpr = window.devicePixelRatio || 1
-        setViewportWidth(Math.ceil(window.innerWidth * dpr / 200) * 200)
+        setViewportWidth(Math.min((Math.ceil(window.innerWidth * dpr / 200) * 200), 1400))
         
         fetchSiteContent()
     }, [])
