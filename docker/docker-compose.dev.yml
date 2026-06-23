@@ -42,6 +42,8 @@ services:
       context: .
       dockerfile: frontend.Dockerfile
     restart: unless-stopped
+    volumes:
+      - ../public:/app/public
     depends_on:
       - backend
     networks:
