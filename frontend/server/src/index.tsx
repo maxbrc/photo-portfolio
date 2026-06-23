@@ -12,7 +12,11 @@ app.use("/static", express.static(path.join(process.cwd(), "client/dist/static/"
 app.use("/assets", express.static(path.join(process.cwd(), "client/dist/assets/")))
 const publicPath = path.join(process.cwd(), "public");
 
-fs.mkdirSync(publicPath);
+try {
+    fs.mkdirSync(publicPath);
+} catch {
+    console.log("[INFO] public directory already exists, not creating.")
+}
 
 app.get("/sitemap.xml", (req, res) => {
     res.sendFile(path.join(publicPath, "sitemap.xml"));
