@@ -65,6 +65,8 @@ services:
   frontend:
     image: ghcr.io/maxbrc/photo-portfolio/frontend:latest
     restart: unless-stopped
+    volumes:
+      - ./public:/app/public
     depends_on:
       - backend
     networks:
@@ -82,12 +84,15 @@ Now just start the project:
 ```
 docker compose up -d
 ```
+## Optional: Sitemap and Robots
+You may provide a `sitemap.xml` and `robots.txt` in the mounted `public` directory. These will be served under the page root.
 # Spelunking
 ## Application data
 Inside the mounted `data` folder you will find the following:
 - `config.json`
-- `photos`
+- `photos`,
 - `secrets`
+- `public`
 ### config.json
 Arguably deserving better naming, this file contains the website/homepage configuration data. This would simply make no sense to store in the database, so for convenience, it's stored in this JSON file.
 All of this is editable through the web interface, so don't bother with manual editing.
@@ -96,6 +101,8 @@ This is where the actual image files lie. If you go inside this directory, you w
 The high-quality original WebP conversions lie in the `originals` folder, while the cached and resized versions sit in `derivatives`. The derivative image filename is composed like this: `width_height_filename.webp`.
 ### secrets
 This directory simply contains a single file with binary data. This directory has tighter permissions since it contains exactly 32 bytes that are used to seed the Ed25519 private key, which is used to sign the JWT's (authorization tokens).
+### public
+This is where you put your optional `sitemap.xml` and `robots.txt`. 
 ## Development and build guide
 Clone the repository. Then copy the `.env.example` to `.env`.
 ### The right way

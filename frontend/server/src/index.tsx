@@ -2,6 +2,7 @@ import express from "express";
 import { StaticRouter } from "react-router";
 import { renderToString } from "react-dom/server";
 import path from "path";
+import fs from "fs";
 
 import App from "../../client/src/components/App";
 
@@ -9,6 +10,17 @@ const app = express()
 
 app.use("/static", express.static(path.join(process.cwd(), "client/dist/static/")))
 app.use("/assets", express.static(path.join(process.cwd(), "client/dist/assets/")))
+const publicPath = path.join(process.cwd(), "public");
+
+fs.mkdirSync(publicPath);
+
+app.get("/sitemap.xml", (req, res) => {
+    res.sendFile(path.join(publicPath, "sitemap.xml"));
+});
+
+app.get("/robots.txt", (req, res) => {
+    res.sendFile(path.join(publicPath, "robots.txt"));
+});
 
 interface websiteConfig {
     title: string;
