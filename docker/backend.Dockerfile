@@ -1,9 +1,9 @@
-FROM golang:1.25-alpine AS builder
+FROM golang:1.27-alpine AS builder
 WORKDIR /app
 
-LABEL org.opencontainers.image.source=https://github.com/maxbrc/photo-portfolio
-LABEL org.opencontainers.image.description="Go backend container image for the photo-portfolio application"
-LABEL org.opencontainers.image.licenses=MIT
+LABEL org.opencontainers.image.source https://github.com/maxbrc/photo-portfolio
+LABEL org.opencontainers.image.description "Go backend container image for the photo-portfolio application"
+LABEL org.opencontainers.image.licenses MIT
 
 COPY backend/go.mod backend/go.sum ./
 RUN go mod download

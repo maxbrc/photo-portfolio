@@ -1,10 +1,7 @@
-version: "3.9"
-
 services:
   db:
-    image: mariadb:11
+    image: mariadb:13
     restart: unless-stopped
-    env_file: .env
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
@@ -12,26 +9,19 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
-    networks:
-      - app
 
   backend:
     build:
       context: .
-      dockerfile: backend.Dockerfile
+      dockerfile: ./docker/backend.Dockerfile
     restart: unless-stopped
     env_file: .env
-    environment:
-      NODE_URL: http://frontend:3010
-      DB_HOST: db
     volumes:
-      - ../data:/app/data
+      - ./backend/data:/app/data
     depends_on:
       - db
     ports:
       - "3000:3000"
-    networks:
-      - app
     ulimits:
       nofile:
         soft: 65536
@@ -40,17 +30,12 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: frontend.Dockerfile
+      dockerfile: ./docker/frontend.Dockerfile
     restart: unless-stopped
     volumes:
-      - ../public:/app/public
+      - ./frontend/public:/app/public
     depends_on:
       - backend
-    networks:
-      - app
 
 volumes:
   db_data:
-
-networks:
-  app:

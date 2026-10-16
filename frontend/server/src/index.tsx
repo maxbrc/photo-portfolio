@@ -32,11 +32,13 @@ interface websiteConfig {
     url: string;
 }
 
+const BACKEND_URL = process.env.BACKEND_URL ?? "http://localhost:3000"
+
 app.get("/{*any}", async (req, res) => {
     let config: websiteConfig = {} as websiteConfig
 
     try {
-        const res = await fetch(`${req.protocol}://${req.host}/api/site-content`)
+        const res = await fetch(`${BACKEND_URL}/api/site-content`)
 
         if (!res.ok) throw new Error(await res.text())
 

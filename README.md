@@ -42,6 +42,7 @@ services:
   backend:
     image: ghcr.io/maxbrc/photo-portfolio/backend:latest
     restart: unless-stopped
+    env_file: .env
     volumes:
       - ./data:/app/data
     depends_on:
@@ -65,7 +66,7 @@ volumes:
   db_data:
 ```
 ## Starting the app
-You should now have a `.env` and `docker-compose.yml` file sitting in the root of the folder.
+You should now have a `.env` and `compose.yaml` file sitting in the root of the folder.
 Now just start the project:
 ```
 docker compose up -d
@@ -98,4 +99,4 @@ For the backend, run `go run ./cmd/main.go`. You will need to Ctrl+C and re-run 
 For the backend, run `go build -o server ./cmd/main.go`. The only folder and file you have to keep is config/config.default.json. For the frontend, run `npm run build`. This will give you the final files in the `server/dist` and `client/dist` directories.
 Along with this, we don't bundle Node modules, so you will need to keep the two `dist` folders, and the `package.json` and `package-lock.json`. On the target machine, run `npm ci --omit=dev` to install the production dependencies.
 ## Docker
-I don't use this, but you could develop using Docker containers. Use the file `docker/docker-compose.dev.yml`. To build and run, run `docker compose up -d --build`
+I don't use this, but you could develop using Docker containers. Use the file `docker-compose.dev.yaml`. To build and run, run `docker compose -f docker-compose.dev.yaml up -d --build`
