@@ -18,5 +18,8 @@ WORKDIR /app
 COPY --from=builder /app/server .
 COPY --from=builder /app/config ./config
 
+ENV NODE_URL http://frontend:3100
+ENV DB_HOST db
+
 EXPOSE 3000
 CMD ["./server"]

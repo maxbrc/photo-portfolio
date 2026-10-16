@@ -92,7 +92,6 @@ Inside the mounted `data` folder you will find the following:
 - `config.json`
 - `photos`,
 - `secrets`
-- `public`
 ### config.json
 Arguably deserving better naming, this file contains the website/homepage configuration data. This would simply make no sense to store in the database, so for convenience, it's stored in this JSON file.
 All of this is editable through the web interface, so don't bother with manual editing.
@@ -101,7 +100,8 @@ This is where the actual image files lie. If you go inside this directory, you w
 The high-quality original WebP conversions lie in the `originals` folder, while the cached and resized versions sit in `derivatives`. The derivative image filename is composed like this: `width_height_filename.webp`.
 ### secrets
 This directory simply contains a single file with binary data. This directory has tighter permissions since it contains exactly 32 bytes that are used to seed the Ed25519 private key, which is used to sign the JWT's (authorization tokens).
-### public
+## Public data
+You will also find a mounted `public` directory.
 This is where you put your optional `sitemap.xml` and `robots.txt`. 
 ## Development and build guide
 Clone the repository. Then copy the `.env.example` to `.env`.
