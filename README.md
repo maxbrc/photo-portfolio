@@ -39,8 +39,6 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
-    networks:
-      - app
 
   backend:
     image: ghcr.io/maxbrc/photo-portfolio/backend:latest
@@ -51,8 +49,6 @@ services:
       - db
     ports:
       - "3000:3000"
-    networks:
-      - app
     ulimits:
       nofile:
         soft: 65536
@@ -65,14 +61,9 @@ services:
       - ./public:/app/public
     depends_on:
       - backend
-    networks:
-      - app
 
 volumes:
   db_data:
-
-networks:
-  app:
 ```
 ## Starting the app
 You should now have a `.env` and `docker-compose.yml` file sitting in the root of the folder.
