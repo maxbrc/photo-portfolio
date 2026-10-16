@@ -29,7 +29,7 @@ Next, you want to create a `docker-compose.yml` and paste the following docker c
 ```yaml
 services:
   db:
-    image: mariadb:11
+    image: mariadb:13
     restart: unless-stopped
     env_file: .env
     environment:
@@ -45,10 +45,6 @@ services:
   backend:
     image: ghcr.io/maxbrc/photo-portfolio/backend:latest
     restart: unless-stopped
-    env_file: .env
-    environment:
-      NODE_URL: http://frontend:3010
-      DB_HOST: db
     volumes:
       - ./data:/app/data
     depends_on:
@@ -90,7 +86,7 @@ You may provide a `sitemap.xml` and `robots.txt` in the mounted `public` directo
 ## Application data
 Inside the mounted `data` folder you will find the following:
 - `config.json`
-- `photos`,
+- `photos`
 - `secrets`
 ### config.json
 Arguably deserving better naming, this file contains the website/homepage configuration data. This would simply make no sense to store in the database, so for convenience, it's stored in this JSON file.
