@@ -31,7 +31,6 @@ services:
   db:
     image: mariadb:13
     restart: unless-stopped
-    env_file: .env
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
